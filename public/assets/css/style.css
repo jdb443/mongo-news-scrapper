@@ -1,0 +1,55 @@
+/*
+body {
+  background-color: lightgray;
+}
+*/
+
+#table-container
+{
+  width: 70%;
+  float: left;
+}
+
+
+#notes
+{
+  width: 28%;
+  float: right;
+  margin-left: 5px;
+}
+
+#HomeTitle {
+  font-size: 70px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#HomeTitleSub {
+  font-size: 30px;
+  text-align: center;
+}
+
+#scrapeLink {
+  color: red;
+}
+
+th {
+  text-align: center;
+}
+
+.maxTitle {
+  max-width: 150px;
+}
+
+.maxSummary {
+  max-width: 350px;
+}
+
+.maxByline {
+  max-width: 150px;
+}
+
+.maxLink {
+  max-width: 225px;
+  word-break: break-all;
+}
