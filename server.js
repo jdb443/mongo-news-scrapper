@@ -39,7 +39,7 @@ app.use(logger("dev"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScrape";
 
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Routes
 
@@ -50,33 +50,52 @@ app.get('/', function (req, res) {
 
 
 // A GET route for scraping the nytimes website
-app.get("/scrape", function(req, res) {
+app.get("/scrape",  function(req, res) {
   // First, we grab the body of the html with request
-  axios.get("https://www.nytimes.com/section/world").then(function(response) {
+  axios.get("https://www.nytimes.com/").then( function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
+    var articles = [];
     // Now, we grab every story-body class within the div, and do the following:
-    $("div.story-body").each(function(i, element) {
-      var result = {};
-      result.title = $(element)
-        .children("h2.headline")
-        .children("a")
-        .text();
-      result.link = $(element)
-        .children("h2.headline")
-        .children("a")
-        .attr("href");
-      result.summary = $(element)
-        .children("p.summary")
-        .text();
-      result.byline = $(element)
-        .children("p.byline")
-        .text();
-    
+    $(".assetWrapper").each(function(i, element) {
 
+      var head = $(this)
+        .find("h2")
+        .text()
+        .trim();
+
+      // Grab the URL of the article
+      var url = $(this)
+        .find("a")
+        .attr("href");
+
+      // Grab the summary of the article
+      var sum = $(this)
+        .find("p")
+        .text()
+        .trim();
+
+      // So long as our headline and sum and url aren't empty or undefined, do the following
+      if (head && sum && url) {
+        // This section uses regular expressions and the trim function to tidy our headlines and summaries
+        // We're removing extra lines, extra spacing, extra tabs, etc.. to increase to typographical cleanliness.
+        var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+        var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+
+        // Initialize an object we will push to the articles array
+        var dataToAdd = {
+          headline: headNeat,
+          summary: sumNeat,
+          url: "https://www.nytimes.com" + url
+        };
+      }
+
+        // Push new article into articles array
+      console.log("dataToAdd", dataToAdd);
+      articles.push(dataToAdd);
       // Create a new Article using the `result` object built from scraping
-      db.Article.create(result)
+      db.Article.create(dataToAdd)
         .then(function(dbArticle) {
           // View the added result in the console
           console.log(dbArticle);
@@ -86,10 +105,10 @@ app.get("/scrape", function(req, res) {
           return res.json(err);
         });
     });
-
+    console.log(articles)
     // If we were able to successfully scrape and save an Article, send a message to the client
-    res.send("Scrape Complete");
-  });
+    res.render('index', {articles: articles});
+  }); 
 });
 
 // Route for getting all Articles from the db

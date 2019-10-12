@@ -27,10 +27,10 @@ var ArticleSchema = new Schema({
     trim: true
   },
   // `byline` is of type String
-  byline: {
-    type: String,
-    trim: true
-  },
+  // byline: {
+  //   type: String,
+  //   trim: true
+  // },
   // `favorite` is a Boolean
   favorite: {
     type: Boolean,
