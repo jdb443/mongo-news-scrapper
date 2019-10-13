@@ -9,26 +9,26 @@ var Schema = mongoose.Schema;
 
 // Create the movieSchema with the schema object
 var movieSchema = new Schema({
-    title: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    rating: {
-        type: Number,
-        required: true,
-        min: [1, 'Need a rating more then one'],
-        max: [10, 'Need a rating no greater then 10']
-    },
-    director: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    favorite: {
-        type: Boolean,
-        default: false
-    }
+	title: {
+		type: String,
+		trim: true,
+		required: true
+	},
+	rating: {
+		type: Number,
+		required: true,
+		min: [1, "Need a rating more then one"],
+		max: [10, "Need a rating no greater then 10"]
+	},
+	director: {
+		type: String,
+		trim: true,
+		required: true
+	},
+	favorite: {
+		type: Boolean,
+		default: false
+	}
 });
 
 // Create the movie model using the movieSchema

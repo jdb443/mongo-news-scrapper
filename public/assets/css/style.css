@@ -4,52 +4,49 @@ body {
 }
 */
 
-#table-container
-{
-  width: 70%;
-  float: left;
+#table-container {
+	width: 70%;
+	float: left;
 }
 
-
-#notes
-{
-  width: 28%;
-  float: right;
-  margin-left: 5px;
+#notes {
+	width: 28%;
+	float: right;
+	margin-left: 5px;
 }
 
 #HomeTitle {
-  font-size: 70px;
-  text-align: center;
-  margin-top: 100px;
+	font-size: 70px;
+	text-align: center;
+	margin-top: 100px;
 }
 
 #HomeTitleSub {
-  font-size: 30px;
-  text-align: center;
+	font-size: 30px;
+	text-align: center;
 }
 
 #scrapeLink {
-  color: red;
+	color: red;
 }
 
 th {
-  text-align: center;
+	text-align: center;
 }
 
 .maxTitle {
-  max-width: 150px;
+	max-width: 150px;
 }
 
 .maxSummary {
-  max-width: 350px;
+	max-width: 350px;
 }
 
 .maxByline {
-  max-width: 150px;
+	max-width: 150px;
 }
 
 .maxLink {
-  max-width: 225px;
-  word-break: break-all;
+	max-width: 225px;
+	word-break: break-all;
 }
