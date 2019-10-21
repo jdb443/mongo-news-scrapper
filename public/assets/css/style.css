@@ -4,6 +4,14 @@ body {
 }
 */
 
+@font-face {
+	font-family: "engrvrsoldeng_btregular";
+	src: url("engraversoldenglish-webfont.woff2") format("woff2"),
+		url("engraversoldenglish-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
 #table-container {
 	width: 70%;
 	float: left;
@@ -22,7 +30,8 @@ body {
 }
 
 #HomeTitleSub {
-	font-size: 30px;
+	font-family: engrvrsoldeng_btregular;
+	font-size: 60px;
 	text-align: center;
 }
 
