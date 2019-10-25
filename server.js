@@ -101,7 +101,7 @@ app.get("/scrape", function(req, res) {
 			db.Article.create(dataToAdd)
 				.then(function(dbArticle) {
 					// View the added result in the console
-					console.log(dbArticle);
+					console.log("Add articles to the DB --->", dbArticle);
 				})
 				.catch(function(err) {
 					// If an error occurred, send it to the client
