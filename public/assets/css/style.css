@@ -24,15 +24,20 @@ body {
 }
 
 #HomeTitle {
+	font-family: "engrvrsoldeng_btregular";
 	font-size: 70px;
 	text-align: center;
 	margin-top: 100px;
 }
 
 #HomeTitleSub {
-	font-family: engrvrsoldeng_btregular;
+	font-family: "engrvrsoldeng_btregular";
 	font-size: 60px;
 	text-align: center;
+}
+
+.engrvrsoldeng {
+	font-family: "engrvrsoldeng_btregular";
 }
 
 #scrapeLink {
