@@ -1,8 +1,10 @@
-# MongoScraper
+# NY Times MongoScraper
+
+<img src="./public/assets/images/nyt.png" alt="NY Times Logo">
 
 This app scrapes news articles from the New York Times World section and lets the user leave comments on the latest news.
 
--   The app has a link to scrape new articles
+-   The app has a link to scrape new articles from the NY Times.
 
 -   The app has a page that displays all the articles in the database, where the user can
     click on a button to add a note to a article or click a button to add the article to the
